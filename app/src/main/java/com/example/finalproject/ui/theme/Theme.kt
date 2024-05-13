@@ -39,4 +39,4 @@ fun MoneyTheme(
     )
 }
 
-// Check
+// Chec
