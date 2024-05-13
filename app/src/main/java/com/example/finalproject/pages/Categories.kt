@@ -51,6 +51,7 @@ fun Categories(
     navController: NavController, vm: CategoriesViewModel = viewModel()
 ) {
     val uiState by vm.uiState.collectAsState()
+    val swipeableState = rememberDismissState()
 
     val colorPickerController = rememberColorPickerController()
 
@@ -72,6 +73,7 @@ fun Categories(
                             Text("Settings")
                         }
                     }
+<<<<<<< HEAD
                 })
         },
         content = { innerPadding ->
@@ -99,6 +101,40 @@ fun Categories(
                                             background = Destructive,
                                             onSwipe = { vm.deleteCategory(category) }
                                         ),
+=======
+                }
+            })
+    }, content = { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .clip(Shapes.large)
+                        .background(BackgroundElevated)
+                        .fillMaxWidth()
+                ) {
+                    itemsIndexed(uiState.categories) { index, category ->
+                        SwipeToDismiss(state = swipeableState, background = {Text(text = "fdsf")}, dismissContent = {
+                            
+
+                        TableRow(modifier = Modifier.background(BackgroundElevated)) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.padding(horizontal = 16.dp)
+                            ) {
+                                Surface(
+                                    color = category.color,
+                                    shape = CircleShape,
+                                    border = BorderStroke(
+                                        width = 2.dp,
+                                        color = Color.White
+>>>>>>> c895d9f97b7fd7be3139f56421fd0ef66ff4c2fd
                                     ),
                                     modifier = Modifier.animateItemPlacement()
                                 ) {
@@ -136,6 +172,7 @@ fun Categories(
                                 }
                             }
                         }
+<<<<<<< HEAD
                     }
                 }
                 Row(
@@ -226,6 +263,16 @@ fun Categories(
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 maxLines = 1,
+=======
+                        },
+                            directions = setOf(DismissDirection.EndToStart))
+
+                        if (index < uiState.categories.size - 1) {
+                            Divider(
+                                modifier = Modifier.padding(start = 16.dp),
+                                thickness = 1.dp,
+                                color = DividerColor
+>>>>>>> c895d9f97b7fd7be3139f56421fd0ef66ff4c2fd
                             )
                         }
                     }

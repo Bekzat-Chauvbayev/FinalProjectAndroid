@@ -91,7 +91,8 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
             ))
         },
         content = {innerPadding ->
-            Column(modifier = Modifier.padding(innerPadding),
+            Column(
+                modifier = Modifier.padding(innerPadding),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Column(modifier = Modifier
                     .padding(16.dp)
@@ -189,9 +190,9 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                         }
                         TextButton(onClick = { categoriesMenuOpened = true },
                             shape = Shapes.large) {
-                            Text(text = selectedCategory)
-                            DropdownMenu(expanded = categoriesMenuOpened, onDismissRequest = {
-                                categoriesMenuOpened= false
+                            Text(state.category?: "Select a category first")
+                            DropdownMenu(expanded = categoriesMenuOpened,
+                                onDismissRequest = { categoriesMenuOpened= false
                             }) {
                                 categories.forEach{category->
                                     DropdownMenuItem(text = {
@@ -202,7 +203,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                                             Text(category, modifier = Modifier.padding(start = 8.dp))
                                                             }
                                     }, onClick =
-                                    { selectedCategory = category
+                                    { vm.setCategory(category)
                                     categoriesMenuOpened = false
                                     }
                                     )
@@ -212,7 +213,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                         }
                     })
                 }
-                Button(onClick = { /*TODO*/ },
+                Button(onClick = { vm::submitExpense},
                     modifier = Modifier.padding(16.dp),
                     shape = Shapes.large) {
                     Text("Submit expense")
