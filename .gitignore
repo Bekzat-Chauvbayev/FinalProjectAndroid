@@ -58,4 +58,8 @@ outTmp/
 /kotlin-native/dist
 kotlin-ide/
 .kotlin/
+<<<<<<< HEAD
 .teamcity/
+=======
+.teamcity/
+>>>>>>> a989b877f562762e557606531057cefcf3441255
