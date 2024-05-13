@@ -53,7 +53,7 @@ fun Add(navController: NavController){
                             onValueChange = {},
                             modifier = Modifier.fillMaxWidth(),
                             textStyle = TextStyle(
-                                textAlign = TextAlign.End
+                                textAlign = TextAlign.Right
                             ),
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Number,
@@ -75,16 +75,12 @@ fun Add(navController: NavController){
                         UnstyledTextField(
                             value = "",
                             onValueChange = {},
-                            placeholder = {Text("Leave some notes")},
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .height(44.dp),
+                                .fillMaxWidth(),
                             textStyle = TextStyle(
-                                textAlign = TextAlign.End,
+                                textAlign = TextAlign.Right,
                             ),
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Number,
-                            )
+
                         )
                     }
                     Divider(modifier = Modifier
