@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import com.example.finalproject.pages.Add
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.compose.NavHost
@@ -130,7 +131,7 @@ class MainActivity : ComponentActivity() {
                               .fillMaxSize()
                               .padding(innerPadding),
                         ) {
-                           Greeting("Categories")
+                           Add(navController)
                         }
                      }
                   }
