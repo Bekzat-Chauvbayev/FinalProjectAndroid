@@ -76,5 +76,7 @@ dependencies {
     implementation ("me.saket.swipe:swipe:1.0.0")
     implementation ("androidx.compose.material3:material3:1.0.1")
     implementation ("io.github.serpro69:kotlin-faker:1.13.0")
+    implementation ("com.github.tehras:charts:0.2.4-alpha")
+
 
 }

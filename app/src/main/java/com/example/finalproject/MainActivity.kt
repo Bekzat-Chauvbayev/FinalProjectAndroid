@@ -18,6 +18,7 @@ import com.example.finalproject.pages.Add
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.finalproject.pages.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -128,7 +129,7 @@ class MainActivity : ComponentActivity() {
                               .fillMaxSize()
                               .padding(innerPadding),
                         ) {
-                           Greeting("Reports")
+                           Reports()
                         }
                      }
                      composable("add") {
