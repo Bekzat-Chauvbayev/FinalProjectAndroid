@@ -1,63 +1,44 @@
 package com.example.finalproject.pages
 
+import android.content.res.Configuration
 import android.os.Build
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Divider
-import android.app.DatePickerDialog
-import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.finalproject.models.Recurrence
-import android.content.res.Configuration
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MediumTopAppBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
-import androidx.navigation.NavController
-import com.example.finalproject.components.TableRow
-import com.example.finalproject.components.UnstyledTextField
-import com.example.finalproject.ui.theme.BackgroundElevated
-import com.example.finalproject.ui.theme.Shapes
-import com.example.finalproject.ui.theme.TopAppBarBackground
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.finalproject.components.TableRow
+import com.example.finalproject.components.UnstyledTextField
+import com.example.finalproject.models.Recurrence
+import com.example.finalproject.ui.theme.BackgroundElevated
+import com.marosseleng.compose.material3.datetimepickers.date.ui.dialog.DatePickerDialog
 import com.example.finalproject.ui.theme.DividerColor
 import com.example.finalproject.ui.theme.MoneyTheme
 import com.example.finalproject.ui.theme.Primary
+import com.example.finalproject.ui.theme.TopAppBarBackground
+import com.example.finalproject.ui.theme.Typography
 import com.example.finalproject.viewmodels.AddViewModel
 import java.util.*
+import com.example.finalproject.ui.theme.Shapes
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalMaterial3Api:: class)
+@OptIn(ExperimentalMaterial3Api:: class, ExperimentalComposeUiApi::class)
 @Composable
 fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
     val state by vm.uiState.collectAsState()
@@ -89,7 +70,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
         mutableStateOf("${mCalendar.get(Calendar.DAY_OF_MONTH)}-${mCalendar.get(Calendar.MONTH) + 1}-${mCalendar.get(Calendar.YEAR)}")
     }
 
-    val mDatePicker = DatePickerDialog(
+    val mDatePicker = android.app.DatePickerDialog(
         mContext,
         { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDay: Int ->
             mDate = "${selectedDay}-${selectedMonth + 1}-${selectedYear}"
@@ -137,6 +118,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                     Divider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
+
                     TableRow("Recurrence"){
                         var recurrenceMenuOpened by remember {
                             mutableStateOf(false)
@@ -162,6 +144,9 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                     Divider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
+                    var datePickerShowing by remember {
+                        mutableStateOf(false)
+                    }
                     TableRow("Date"){
                         TextButton(onClick = { datePickerShowing = true }) {
                             Text(state.date.toString())
