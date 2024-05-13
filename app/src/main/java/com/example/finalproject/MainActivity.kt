@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.pages.Expenses
 import com.example.finalproject.pages.Settings
 import com.example.finalproject.ui.theme.MoneyTheme
+import com.example.finalproject.ui.theme.TopAppBarBackground
 
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +30,8 @@ class MainActivity : ComponentActivity() {
             val backStackEntry = navController.currentBackStackEntryAsState()
             Scaffold(
                bottomBar = {
-                  NavigationBar {
+                  NavigationBar(containerColor = TopAppBarBackground) {
+
                      NavigationBarItem(
                         selected = backStackEntry.value?.destination?.route == "expenses",
                         onClick = { navController.navigate("expenses") },
@@ -70,7 +72,7 @@ class MainActivity : ComponentActivity() {
                         }
                      )
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route == "settings",
+                        selected = backStackEntry.value?.destination?.route?.startsWith("settings") ?: false,
                         onClick = { navController.navigate("settings") },
                         label = {
                            Text("Settings")

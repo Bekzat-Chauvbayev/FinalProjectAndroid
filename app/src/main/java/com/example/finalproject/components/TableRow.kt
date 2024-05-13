@@ -14,34 +14,32 @@ import androidx.compose.ui.unit.dp
 import com.example.finalproject.R
 import com.example.finalproject.ui.theme.Destructive
 import com.example.finalproject.ui.theme.TextPrimary
+import com.example.finalproject.ui.theme.Typography
+import androidx.compose.foundation.clickable
+import androidx.compose.material3.Text
 
 @Composable
 fun TableRow(
-    label: String? = null,
+    label: String,
+    onClick: (String) -> Unit,
     hasArrow: Boolean = false,
-    isDestructive:Boolean = false,
-    detailContent:(@Composable RowScope.() -> Unit)? = null,
-    content: (@Composable RowScope.() -> Unit)? = null
+    isDestructive:Boolean = false
 ) {
     val textColor = if (isDestructive) Destructive else TextPrimary
 
     Row(
-    modifier = Modifier.fillMaxSize(),
+    modifier = Modifier
+        .fillMaxSize()
+        .clickable { onClick(label) }
+        .padding(horizontal = 16.dp, vertical = 10.dp),
     horizontalArrangement = Arrangement.SpaceBetween,
-    verticalAlignment = Alignment.CenterVertically
     ){
-     if(content != null){
-        content()
-     }
+        Text(text = label, style = Typography.bodyMedium, color = textColor,)
         if(hasArrow){
     Icon(
         painterResource(id = R.drawable.btn_right),
         contentDescription = "Right Arrow",
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)
     )
-        }
-        if(detailContent != null){
-            detailContent()
         }
     }
 }
