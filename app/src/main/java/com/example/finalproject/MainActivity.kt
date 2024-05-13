@@ -10,6 +10,10 @@ import androidx.compose.material3.*
 import android.view.WindowManager
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import com.example.finalproject.pages.Add
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,14 +36,25 @@ class MainActivity : ComponentActivity() {
 
       setContent {
          MoneyTheme {
+            var showBottomBar by rememberSaveable {
+               mutableStateOf(true)
+            }
             val navController = rememberNavController()
-            val backStackEntry = navController.currentBackStackEntryAsState()
+            val backStackEntry by navController.currentBackStackEntryAsState()
+
+            showBottomBar = when (backStackEntry?.destination?.route){
+               "settings/categories" -> false
+               else -> true
+            }
             Scaffold(
                bottomBar = {
+                  if(showBottomBar){
+
+
                   NavigationBar(containerColor = TopAppBarBackground) {
 
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route == "expenses",
+                        selected = backStackEntry?.destination?.route == "expenses",
                         onClick = { navController.navigate("expenses") },
                         label = {
                            Text("Expenses")
@@ -52,7 +67,7 @@ class MainActivity : ComponentActivity() {
                         }
                      )
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route == "reports",
+                        selected = backStackEntry?.destination?.route == "reports",
                         onClick = { navController.navigate("reports") },
                         label = {
                            Text("Reports")
@@ -65,7 +80,7 @@ class MainActivity : ComponentActivity() {
                         }
                      )
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route == "add",
+                        selected = backStackEntry?.destination?.route == "add",
                         onClick = { navController.navigate("add") },
                         label = {
                            Text("Add")
@@ -78,7 +93,7 @@ class MainActivity : ComponentActivity() {
                         }
                      )
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route?.startsWith("settings")
+                        selected = backStackEntry?.destination?.route?.startsWith("settings")
                            ?: false,
                         onClick = { navController.navigate("settings") },
                         label = {
@@ -90,9 +105,12 @@ class MainActivity : ComponentActivity() {
                               contentDescription = "Settings"
                            )
                         }
+
                      )
                   }
+                  }
                },
+
                content = { innerPadding ->
                   NavHost(navController = navController, startDestination = "expenses") {
                      composable("expenses") {

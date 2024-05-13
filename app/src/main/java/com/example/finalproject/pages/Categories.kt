@@ -42,6 +42,7 @@ fun Categories(
     navController: NavController, vm: CategoriesViewModel = viewModel()
 ) {
     val uiState by vm.uiState.collectAsState()
+    val swipeableState = rememberDismissState()
 
     val colorPickerController = rememberColorPickerController()
 
@@ -79,7 +80,10 @@ fun Categories(
                         .fillMaxWidth()
                 ) {
                     itemsIndexed(uiState.categories) { index, category ->
-                        TableRow() {
+                        SwipeToDismiss(state = swipeableState, background = {Text(text = "fdsf")}, dismissContent = {
+                            
+
+                        TableRow(modifier = Modifier.background(BackgroundElevated)) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -103,6 +107,9 @@ fun Categories(
                                 )
                             }
                         }
+                        },
+                            directions = setOf(DismissDirection.EndToStart))
+
                         if (index < uiState.categories.size - 1) {
                             Divider(
                                 modifier = Modifier.padding(start = 16.dp),

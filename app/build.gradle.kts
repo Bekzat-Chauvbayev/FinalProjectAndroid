@@ -69,6 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.compose.navigation)
     implementation(libs.datepickers )
+    implementation ("androidx.compose.material3:material3:1.1.0-alpha04")
     implementation ("com.marosseleng.android:compose-material3-datetime-pickers:0.6.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     implementation ("com.github.skydoves:colorpicker-compose:1.0.0")
