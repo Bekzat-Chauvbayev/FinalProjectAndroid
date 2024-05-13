@@ -43,12 +43,12 @@ fun Settings(navController: NavController) {
                     .background(BackgroundElevated)
                     .fillMaxWidth()
                     ){
-                    TableRow("Categories", hasArrow = true, modifier = Modifier.clickable {
+                    TableRow(label = "Categories", hasArrow = true, modifier = Modifier.clickable {
                         navController.navigate("setting/categories")
                     })
                     Divider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor)
-                    TableRow("Erase all data", isDestructive = true)
+                    TableRow(label = "Erase all data", isDestructive = true)
                 }
             }
         }

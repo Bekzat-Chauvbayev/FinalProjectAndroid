@@ -1,15 +1,19 @@
 package com.example.finalproject
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
+import android.view.WindowManager
+
 import androidx.compose.runtime.Composable
 import com.example.finalproject.pages.Add
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -24,6 +28,7 @@ class MainActivity : ComponentActivity() {
    @OptIn(ExperimentalMaterial3Api::class)
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
+      window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
       setContent {
          MoneyTheme {
@@ -73,7 +78,8 @@ class MainActivity : ComponentActivity() {
                         }
                      )
                      NavigationBarItem(
-                        selected = backStackEntry.value?.destination?.route?.startsWith("settings") ?: false,
+                        selected = backStackEntry.value?.destination?.route?.startsWith("settings")
+                           ?: false,
                         onClick = { navController.navigate("settings") },
                         label = {
                            Text("Settings")
@@ -146,4 +152,6 @@ class MainActivity : ComponentActivity() {
       Text(text = "Hello $name!")
    }
 }
+
+
 

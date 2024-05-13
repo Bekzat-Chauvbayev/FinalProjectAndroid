@@ -1,10 +1,8 @@
 package com.example.finalproject.components
 
-import android.text.style.TtsSpan
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -16,16 +14,16 @@ import androidx.compose.ui.Alignment
 import com.example.finalproject.ui.theme.Destructive
 import com.example.finalproject.ui.theme.TextPrimary
 import com.example.finalproject.ui.theme.Typography
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 
 @Composable
 fun TableRow(
-    label: String,
     modifier: Modifier = Modifier,
+    label: String? = null,
     hasArrow: Boolean = false,
-    isDestructive:Boolean = false,
+    isDestructive: Boolean = false,
+    detailContent: (@Composable RowScope.() -> Unit)? = null,
     content: (@Composable RowScope.() -> Unit)? = null
 ) {
     val textColor = if (isDestructive) Destructive else TextPrimary
@@ -35,8 +33,17 @@ fun TableRow(
        horizontalArrangement = Arrangement.SpaceBetween,
        verticalAlignment = Alignment.CenterVertically,
     ){
-        Text(text = label, style = Typography.bodyMedium, color = textColor,
-    modifier = Modifier.padding(horizontal =16.dp ,vertical = 10.dp))
+      if (label != null){
+          Text(
+              text = label,
+              style = Typography.bodyMedium,
+              color = textColor,
+              modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)
+          )
+      }
+        if(content != null) {
+            content()
+        }
         if(hasArrow){
     Icon(
         painterResource(id = R.drawable.btn_right),
@@ -44,8 +51,8 @@ fun TableRow(
         modifier = Modifier.padding(horizontal =16.dp ,vertical = 10.dp)
     )
         }
-        if(content != null){
-            content()
+        if (detailContent != null){
+            detailContent()
         }
     }
 }
