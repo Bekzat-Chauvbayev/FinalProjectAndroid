@@ -75,5 +75,6 @@ dependencies {
     implementation ("com.github.skydoves:colorpicker-compose:1.0.0")
     implementation ("me.saket.swipe:swipe:1.0.0")
     implementation ("androidx.compose.material3:material3:1.0.1")
+    implementation ("io.github.serpro69:kotlin-faker:1.13.0")
 
 }
