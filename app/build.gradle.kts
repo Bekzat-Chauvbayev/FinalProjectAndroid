@@ -68,6 +68,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.compose.navigation)
-    implementation(libs.datepickers)
-    implementation(libs.viewmodelcompose)
+    implementation(libs.datepickers )
+    implementation ("com.marosseleng.android:compose-material3-datetime-pickers:0.6.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+
+
 }
