@@ -31,7 +31,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.finalproject.components.PickerTrigger
 import com.example.finalproject.expensesList.ExpensesList
-import com.example.finalproject.mock.mockExpenses
 import com.example.finalproject.models.Recurrence
 import com.example.finalproject.ui.theme.LabelSecondary
 import com.example.finalproject.ui.theme.MoneyTheme
@@ -39,6 +38,7 @@ import com.example.finalproject.ui.theme.TopAppBarBackground
 import com.example.finalproject.viewmodels.ExpensesViewModel
 import  com.example.finalproject.ui.theme.Typography
 import  com.example.finalproject.ui.theme.Shapes
+import java.text.DecimalFormat
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,10 +100,13 @@ fun Expenses(
                         color = LabelSecondary,
                         modifier = Modifier.padding(end = 4.dp, top = 4.dp)
                     )
-                    Text("${state.sumTotal}", style = Typography.titleLarge)
+                    Text(
+                        DecimalFormat("0.#").format(state.sumTotal),
+                        style = Typography.titleLarge
+                    )
                 }
                 ExpensesList(
-                    expenses = mockExpenses,
+                    expenses = state.expenses,
                     modifier = Modifier
                         .weight(1f)
                         .verticalScroll(

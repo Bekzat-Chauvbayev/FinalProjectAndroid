@@ -1,19 +1,18 @@
 package com.example.finalproject.pages
 
-import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.example.finalproject.R
+import com.example.finalproject.components.ReportPage
 import com.example.finalproject.models.Recurrence
 import com.example.finalproject.ui.theme.TopAppBarBackground
 import com.example.finalproject.viewmodels.ReportsViewModel
 
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
 fun Reports(vm: ReportsViewModel = viewModel()) {
@@ -34,10 +33,10 @@ fun Reports(vm: ReportsViewModel = viewModel()) {
                 ),
                 actions = {
                     IconButton(onClick = vm::openRecurrenceMenu) {
-//                        Icon(
-//                            painterResource("),
-//                            contentDescription = "Change recurrence"
-//                        )
+                        Icon(
+                            painterResource(id = R.drawable.ic_today),
+                            contentDescription = "Change recurrence"
+                        )
                     }
                     DropdownMenu(
                         expanded = uiState.recurrenceMenuOpened,
@@ -61,7 +60,7 @@ fun Reports(vm: ReportsViewModel = viewModel()) {
                 else -> 53
             }
             HorizontalPager(count = numOfPages, reverseLayout = true) { page ->
-//                ReportPage(innerPadding, page, uiState.recurrence)
+                ReportPage(innerPadding, page, uiState.recurrence)
             }
         }
     )

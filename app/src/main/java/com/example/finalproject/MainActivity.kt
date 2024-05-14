@@ -27,6 +27,7 @@ import com.example.finalproject.pages.Expenses
 import com.example.finalproject.pages.Settings
 import com.example.finalproject.ui.theme.MoneyTheme
 import com.example.finalproject.ui.theme.TopAppBarBackground
+import io.sentry.compose.withSentryObservableEffect
 
 
 class MainActivity : ComponentActivity() {
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
             var showBottomBar by rememberSaveable {
                mutableStateOf(true)
             }
-            val navController = rememberNavController()
+            val navController = rememberNavController().withSentryObservableEffect()
             val backStackEntry by navController.currentBackStackEntryAsState()
 
             showBottomBar = when (backStackEntry?.destination?.route){
