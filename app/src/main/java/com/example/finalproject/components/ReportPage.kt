@@ -10,9 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.finalproject.components.charts.MonthlyChart
-import com.example.finalproject.components.charts.WeeklyChart
-import com.example.finalproject.components.charts.YearlyChart
+//import com.example.finalproject.components.charts.MonthlyChart
+//import com.example.finalproject.components.charts.WeeklyChart
+//import com.example.finalproject.components.charts.YearlyChart
 import com.example.finalproject.components.expensesList.ExpensesList
 import com.example.finalproject.models.Recurrence
 import com.example.finalproject.ui.theme.LabelSecondary
@@ -86,12 +86,12 @@ fun ReportPage(
                 .padding(vertical = 16.dp)
         ) {
             when (recurrence) {
-                Recurrence.Weekly -> WeeklyChart(expenses = uiState.expenses)
-                Recurrence.Monthly -> MonthlyChart(
-                    expenses = uiState.expenses,
-                    LocalDate.now()
-                )
-                Recurrence.Yearly -> YearlyChart(expenses = uiState.expenses)
+//                Recurrence.Weekly -> WeeklyChart(expenses = uiState.expenses)
+//                Recurrence.Monthly -> MonthlyChart(
+//                    expenses = uiState.expenses,
+//                    LocalDate.now()
+//                )
+//                Recurrence.Yearly -> YearlyChart(expenses = uiState.expenses)
                 else -> Unit
             }
         }

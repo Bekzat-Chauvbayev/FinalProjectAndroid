@@ -15,6 +15,7 @@ navigationCompose = "2.7.7"
 view-model = "2.5.1"
 datepicker = "0.6.0"
 sentry = "3.4.2"
+realm = "1.16.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,5 +43,5 @@ datepickers = {group = "com.marosseleng.android:compose-material3-datetime-picke
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 sentry = { id = "io.sentry.android.gradle", version.ref = "sentry" }
-realm = {id = "io.realm.kotlin"}
+realm = {id = "io.realm.kotlin", version.ref = "realm"}
 
