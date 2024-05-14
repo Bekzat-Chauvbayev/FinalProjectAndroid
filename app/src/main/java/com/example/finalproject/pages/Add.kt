@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.finalproject.ui.theme.MoneyTheme
 import com.marosseleng.compose.material3.datetimepickers.date.ui.dialog.DatePickerDialog
 import com.example.finalproject.components.TableRow
 import com.example.finalproject.components.UnstyledTextField
@@ -193,7 +194,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewAdd() {
-     MoneyTheme {
+    MoneyTheme {
         val navController = rememberNavController()
         Add(navController = navController)
     }

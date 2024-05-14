@@ -6,6 +6,7 @@ import com.example.finalproject.db
 import com.example.finalproject.models.Expense
 import com.example.finalproject.models.Recurrence
 import com.example.finalproject.utils.calculateDateRange
+import io.realm.kotlin.ext.query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

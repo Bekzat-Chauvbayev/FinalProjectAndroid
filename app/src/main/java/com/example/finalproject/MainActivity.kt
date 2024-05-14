@@ -1,6 +1,5 @@
 package com.example.finalproject
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,7 +16,6 @@ import androidx.compose.runtime.setValue
 import com.example.finalproject.pages.Add
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.finalproject.pages.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable

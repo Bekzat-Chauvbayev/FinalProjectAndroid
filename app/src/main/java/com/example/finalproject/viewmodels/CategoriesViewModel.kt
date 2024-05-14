@@ -5,30 +5,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.db
 import com.example.finalproject.models.Category
+import io.realm.kotlin.ext.query
+import io.realm.kotlin.query.RealmResults
 import kotlinx.coroutines.Dispatchers
-
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 data class CategoriesState(
     val newCategoryColor: Color = Color.White,
     val newCategoryName: String = "",
     val colorPickerShowing: Boolean = false,
-    val categories: MutableList<Category> = mutableListOf(
-        Category("Bills", Color.Red),
-        Category("Subscriptions", Color.Yellow),
-        Category("Take out", Color.Blue),
-        Category("Hobbies", Color.Cyan),
-    )
+    val categories: List<Category> = listOf()
 )
 
 class CategoriesViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(CategoriesState())
     val uiState: StateFlow<CategoriesState> = _uiState.asStateFlow()
-
 
     init {
         _uiState.update { currentState ->
