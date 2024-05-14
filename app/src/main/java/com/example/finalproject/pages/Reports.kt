@@ -8,14 +8,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.finalproject.models.Recurrence
 import com.example.finalproject.ui.theme.TopAppBarBackground
-import com.example.finalproject.viewmodels.ReportPageViewModel
+import com.example.finalproject.viewmodels.ReportsViewModel
+
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
-fun Reports(vm: ReportPageViewModel = viewModel()) {
+fun Reports(vm: ReportsViewModel = viewModel()) {
     val uiState = vm.uiState.collectAsState().value
 
     val recurrences = listOf(
